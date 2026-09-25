@@ -5,7 +5,8 @@ import { useActionState, useEffect, useRef } from "react";
 import { itemKey, useCart } from "@/lib/cart";
 import { formatPrice, getProduct } from "@/lib/products";
 import { reserveCart, type LeadState } from "@/app/actions/leads";
-import { ProductFigure } from "./ProductFigure";
+import { ProductImage } from "./ProductImage";
+import { photoFor } from "@/lib/images";
 import { Arrow, Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
@@ -90,8 +91,8 @@ export function Checkout() {
               return (
                 <tr key={key} className="align-top">
                   <td className="rule w-20 py-4 pr-4">
-                    <Link href={`/store/${p.slug}`} className="block h-16 w-16 bg-paper-2 p-1.5">
-                      <ProductFigure figure={p.figure} />
+                    <Link href={`/store/${p.slug}`} className="relative block h-16 w-16 overflow-hidden rounded-xl bg-paper-2">
+                      <ProductImage photo={photoFor(p.slug)} sizes="64px" />
                     </Link>
                   </td>
                   <td className="rule py-4 pr-4">

@@ -9,6 +9,7 @@ const looks = {
   ink: "border-ink bg-ink text-paper hover:border-signal hover:bg-signal",
   paper: "border-paper bg-paper text-ink hover:border-ink hover:bg-ink hover:text-paper",
   glass: "border-transparent bg-paper/10 text-paper hover:bg-paper hover:text-ink",
+  outline: "border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper",
 } as const;
 
 export function AddToCart({

@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { Eyebrow, Headline, Lede, Section } from "@/components/ui/Section";
 import { StatusLegend, StatusPill } from "@/components/ui/StatusPill";
 import { ButtonLink, Arrow } from "@/components/ui/Button";
-import { ExplodedAssembly } from "@/components/figures/ExplodedAssembly";
+import { Architecture } from "@/components/figures/Architecture";
 import { architecture, ctas, modules } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function PlatformPage() {
           <Eyebrow>Architecture</Eyebrow>
           <Headline>Robot → Link → Core → Tool → Fingers</Headline>
         </div>
-        <ExplodedAssembly />
+        <Architecture />
       </Section>
 
       {/* Layer by layer */}

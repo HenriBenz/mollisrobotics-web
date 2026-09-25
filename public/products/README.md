@@ -1,9 +1,16 @@
-# Product images
+# Product photography
 
-Product and laboratory photography goes here, served at `/products/<file>`.
+Served at `/products/<file>`. Mapped to products in `lib/images.ts` (photo + focal point).
 
-Naming: `<module>-<view>-<nn>.<ext>`, e.g. `core-detail-01.jpg`, `soft-strawberry-02.jpg`, `link-flange-01.jpg`.
+| File | Content |
+|---|---|
+| `mollis-product-01.jpg` | Core on an industrial robot, five finger variants standing below (family shot) |
+| `mollis-product-02.jpg` | Soft tool with orange compliant fingers, square |
+| `mollis-product-03.jpg` | Soft tool close-up, portrait |
+| `mollis-product-04.jpg` | Grip parallel gripper, aluminium jaws, black pads |
+| `mollis-product-05.jpg` | Hand with articulated aluminium fingers holding a block |
 
-Guidelines from the brief: industrial-design photography, real materials, real interaction.
-No marketing renders, no stock humanoids. Export web-sized (max 2400px wide), sRGB, JPG or WebP.
-Use them with `next/image` (`<Image src="/products/..." />`) so they are optimised automatically.
+Adding images: drop PNG renders here and run `python scripts/convert-products.py` (needs Pillow)
+to produce web JPGs (max 2000 px, quality 90). Then add or change the entry in `lib/images.ts`.
+Keep the style: real materials, workshop light, black body + aluminium mechanics + orange
+interaction surfaces. Delete the PNG after converting; only JPGs are committed.

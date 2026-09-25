@@ -80,6 +80,15 @@ public/products/        product and lab photography (add files here)
   Never a whole orange surface. No green. Tokens live in `app/globals.css`; product drawings use
   `--polymer` (graphite), `--alu`, `--elastomer` (orange glass). Objects held by the tools are
   drawn as neutral sand specimens.
+- **Photography instead of drawings (2026-09-25, evening)**: user supplied five product renders
+  (`public/products/mollis-product-01..05.jpg`, converted from PNG by `scripts/convert-products.py`)
+  and asked to drop the SVG "clip art" for a realistic, Apple-like look. All SVG figure
+  components were deleted. `lib/images.ts` maps every product to a photo and a focal point
+  (`object-position`) so 15 products share 5 photos through crops; add a photo per product
+  there as they are shot. Tiles are 4:5 photos with name, status and reserve below on white.
+  Hero, store header, product pages (main + gallery), builder, application switcher and the
+  platform architecture all use the photos. The `figure` field in `lib/products.ts` is legacy
+  and unused.
 - **Minimal direction (2026-09-25, later the same day)**: user asked for "the absolute minimum,
   very clean, futuristic". Homepage is now one hero slide (headline, one line, one button, the
   figure) followed directly by the shop tiles. No sections, no chips, no legends. Tiles show

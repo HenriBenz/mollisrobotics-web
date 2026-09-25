@@ -28,7 +28,7 @@ Its content lives in the code: copy in `lib/site.ts` and the page files, structu
 | Motion | `motion` (Framer Motion successor), `motion/react` | used only where it explains engineering |
 | Fonts | Geist (sans) + Geist Mono via `next/font` | neo-grotesk + technical mono, per brief |
 | Database | Neon Postgres, project `mollisrobotics-web`, id `odd-boat-46392836`, region `aws-eu-central-1` (Frankfurt), Postgres 18 | table `leads` |
-| Hosting | Vercel (to be linked) | domains: **mollyrobotics.com** and **mollyrobotics.de** |
+| Hosting | Vercel, project `mollisrobotics-web` on team `henribenzs-projects`, live at mollisrobotics-web.vercel.app | domains **mollyrobotics.com** and **mollyrobotics.de** added, DNS pending |
 | Source | GitHub `HenriBenz/mollisrobotics-web`, branch `main` | |
 | Analytics | `@vercel/analytics` mounted in the root layout | activates once deployed on Vercel |
 
@@ -119,25 +119,33 @@ Done:
 - Logo supplied as four PNGs; cropped into mark, wordmark and lockup (`scripts/crop-logo.py`),
   wired into nav and footer; favicon, Apple icon and Open Graph image generated from it.
 
+- **Deployed on Vercel** (2026-09-25): project `mollisrobotics-web`
+  (`prj_NbFhA0UVYdeh2brkqEOMcwahsvqp`) on team `henribenzs-projects`
+  (`team_K9gAscKxQ9Q30nuBWa5UCa3j`, hobby plan). GitHub repo connected, so every push to
+  `main` deploys to production and every branch gets a preview. Functions region `fra1`.
+  Live at https://mollisrobotics-web.vercel.app. `DATABASE_URL` set for Production and
+  Preview (sensitive), `NEXT_PUBLIC_SITE_URL` set for Production.
+  Linked via the Vercel CLI (`vercel link`); the Vercel MCP token only had read access.
+- Domains `mollyrobotics.com`, `www.mollyrobotics.com` and `mollyrobotics.de` are added to
+  the project but **not yet verified**, see step 1.
+
 Not done / next steps, in order:
-1. **Link Vercel** to the GitHub repo. Target team: `henribenzs-projects`
-   (`team_K9gAscKxQ9Q30nuBWa5UCa3j`, where `kunstform` and `baulogistik-robotik` already live).
-   The Vercel MCP token in the founding session could read that team but every write
-   (create project, link repo) returned 403 "re-authenticate to this scope". Options:
-   re-authenticate the Vercel MCP connection with write access to that team, or use the CLI
-   (installed, v60): `vercel login`, then `vercel link` in the repo, then `vercel env add`,
-   then `vercel deploy --prod`. Or import the repo in the Vercel dashboard and grant the
-   Vercel GitHub app access to `HenriBenz/mollisrobotics-web`.
-2. Set `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` in Vercel project settings (Production + Preview).
-3. Add domains `mollyrobotics.com` and `mollyrobotics.de` in Vercel; decide whether `.de` redirects to `.com`.
-4. Add lead notifications (email on new lead, e.g. via a Vercel Marketplace email integration) and
+1. **Point DNS at Vercel.** `mollyrobotics.com` is registered at Spaceship (nameservers
+   `launch1/launch2.spaceship.net`). In the Spaceship DNS panel add
+   `A  @  76.76.21.21` and `CNAME  www  cname.vercel-dns.com`, or switch the nameservers to
+   `ns1.vercel-dns.com` / `ns2.vercel-dns.com`. `mollyrobotics.de` showed no nameservers at all,
+   so it may not be registered yet; register it, then add the same A record. Vercel verifies
+   automatically and issues certificates. Check with `vercel domains inspect mollyrobotics.com`.
+2. Decide whether `.de` redirects to `.com` (site is English only; recommended: 308 redirect,
+   set in Vercel project settings > Domains) or later serves a German version.
+3. Add lead notifications (email on new lead, e.g. via a Vercel Marketplace email integration) and
    an export path to the newsletter/CRM tool of choice.
-5. Complete `app/imprint` and `app/privacy` with the legal entity details; remove `noindex`.
-6. Ask the designer for SVG versions of the mark and wordmark and swap them into `components/site/Logo.tsx`.
-7. Replace or complement SVG drawings with product photography as prototypes are photographed
+4. Complete `app/imprint` and `app/privacy` with the legal entity details; remove `noindex`.
+5. Ask the designer for SVG versions of the mark and wordmark and swap them into `components/site/Logo.tsx`.
+6. Replace or complement SVG drawings with product photography as prototypes are photographed
    (drop files in `public/products/`).
-8. German language version (`/de`) if the `.de` domain should carry localized content.
-9. Delete the test lead row (id 1) from Neon.
+7. German language version (`/de`) if the `.de` domain should carry localized content.
+8. Delete the test lead row (id 1) from Neon.
 
 ## 8. Working agreements
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ctas, nav, site } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
-import { Logo } from "./Logo";
+import { Lockup } from "./Logo";
 
 export function Footer() {
   return (
@@ -9,8 +9,8 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 py-16 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Logo />
-            <p className="mt-6 max-w-[34ch] text-[15px] leading-relaxed text-ink-2">
+            <Lockup className="h-auto w-[132px]" />
+            <p className="mt-8 max-w-[34ch] text-[15px] leading-relaxed text-ink-2">
               Affordable, modular and adaptive end effectors for the next generation of robots.
               Engineered in {site.location}.
             </p>

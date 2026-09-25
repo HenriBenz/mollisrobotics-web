@@ -115,19 +115,25 @@ public/products/        product and lab photography (add files here)
 Done:
 - Full site: 13 routes, all statically prerendered, `npm run build` and `npm run lint` clean.
 - Neon database provisioned, schema created, early-access form verified end to end.
-- Asset folders with READMEs for brand and product imagery.
+- Pushed to GitHub `main`.
+- Logo supplied as four PNGs; cropped into mark, wordmark and lockup (`scripts/crop-logo.py`),
+  wired into nav and footer; favicon, Apple icon and Open Graph image generated from it.
 
 Not done / next steps, in order:
-1. **Push to GitHub** and **link Vercel** to the repo (import project in Vercel, or `npm i -g vercel && vercel link`).
-2. Set `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` in Vercel project settings.
+1. **Link Vercel** to the GitHub repo. The Vercel MCP connection in the founding session was
+   authenticated but listed no teams, so the project could not be created from here. Either
+   import `HenriBenz/mollisrobotics-web` in the Vercel dashboard (grant the Vercel GitHub app
+   access to the repo), or install the CLI (`npm i -g vercel`) and run `vercel link`.
+2. Set `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` in Vercel project settings (Production + Preview).
 3. Add domains `mollyrobotics.com` and `mollyrobotics.de` in Vercel; decide whether `.de` redirects to `.com`.
-4. Drop the real wordmark into `public/brand/` and swap `components/site/Logo.tsx`.
-5. Add lead notifications (email on new lead, e.g. via a Vercel Marketplace email integration) and
+4. Add lead notifications (email on new lead, e.g. via a Vercel Marketplace email integration) and
    an export path to the newsletter/CRM tool of choice.
-6. Complete `app/imprint` and `app/privacy` with the legal entity details; remove `noindex`.
-7. Add an Open Graph image (`app/opengraph-image.tsx`) once the wordmark exists.
-8. Replace or complement SVG drawings with product photography as prototypes are photographed.
-9. German language version (`/de`) if the `.de` domain should carry localized content.
+5. Complete `app/imprint` and `app/privacy` with the legal entity details; remove `noindex`.
+6. Ask the designer for SVG versions of the mark and wordmark and swap them into `components/site/Logo.tsx`.
+7. Replace or complement SVG drawings with product photography as prototypes are photographed
+   (drop files in `public/products/`).
+8. German language version (`/de`) if the `.de` domain should carry localized content.
+9. Delete the test lead row (id 1) from Neon.
 
 ## 8. Working agreements
 

@@ -71,8 +71,23 @@ public/products/        product and lab photography (add files here)
 
 ## 4. Design decisions
 
-- **Palette**: warm paper `#f4f2ed`, ink `#141414`, industrial greys, a single signal tone `#e2521f`
-  used only for hover states, LEDs and the "available" status. No blue, no gradients.
+- **Palette (MOLLIS core color code, supplied 2026-09-25)**: MOLLIS Black `#111111` (brand,
+  logo, hardware), Graphite `#292927` (housings, secondary surfaces), Warm White `#F4F1EB`
+  (background), Technical Grey `#A7A49E` (drawings, metadata), Sand `#D4C9BA` (material
+  neutral, tiles, specimens), MOLLIS Orange `#FF5A00` (signal), Orange Glass `#FF6A00`
+  (translucent materials). Ratio 70 neutral / 20 black / 10 orange maximum. Orange marks where
+  the robot touches the world: compliant fingers, pads, connectors, LEDs, interaction points.
+  Never a whole orange surface. No green. Tokens live in `app/globals.css`; product drawings use
+  `--polymer` (graphite), `--alu`, `--elastomer` (orange glass). Objects held by the tools are
+  drawn as neutral sand specimens.
+- **Store** (added 2026-09-25 after the Teenage Engineering and product-grid references): the
+  site is structured as a webshop. `/store` (rounded hero panel, category chips, bento grid),
+  `/store/[slug]` product pages, `/store/build` configurator, `/store/checkout`. Because nothing
+  is for sale yet, prices are `null` ("price on launch") and checkout creates a **free,
+  non-binding reservation** stored in Neon (`leads.kind = 'reservation'`, cart in `leads.items`
+  JSONB, reference `M-00001`). Cart is client-side in localStorage (`lib/cart.tsx`). Catalogue
+  is typed data in `lib/products.ts`, shaped so a commerce backend can replace it. When prices
+  are known, fill `price` and the totals compute automatically.
 - **Typography**: large editorial headlines (`text-display`, `text-h1`, `text-h2` tokens), short
   statements, generous whitespace. Technical labels use Geist Mono, uppercase, tracked (`.t-label`).
 - **Imagery**: no stock photos, no renders. All product visuals are hand-drawn SVG technical

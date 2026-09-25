@@ -11,7 +11,7 @@ export function getSql() {
   return neon(url);
 }
 
-export type LeadKind = "early_access" | "partner";
+export type LeadKind = "early_access" | "partner" | "reservation";
 
 export interface LeadInput {
   kind: LeadKind;
@@ -22,19 +22,25 @@ export interface LeadInput {
   robots?: string;
   application?: string;
   message?: string;
+  /** Store reservations: validated cart items. Stored as JSONB. */
+  items?: unknown;
   sourcePath?: string;
   userAgent?: string;
 }
 
-export async function insertLead(lead: LeadInput) {
+/** Inserts a lead and returns its id. */
+export async function insertLead(lead: LeadInput): Promise<number> {
   const sql = getSql();
   if (!sql) throw new Error("DATABASE_URL is not configured");
-  await sql`
-    INSERT INTO leads (kind, email, name, organization, role, robots, application, message, source_path, user_agent)
+  const rows = await sql`
+    INSERT INTO leads (kind, email, name, organization, role, robots, application, message, items, source_path, user_agent)
     VALUES (
       ${lead.kind}, ${lead.email}, ${lead.name ?? null}, ${lead.organization ?? null},
       ${lead.role ?? null}, ${lead.robots ?? null}, ${lead.application ?? null},
-      ${lead.message ?? null}, ${lead.sourcePath ?? null}, ${lead.userAgent ?? null}
+      ${lead.message ?? null}, ${lead.items ? JSON.stringify(lead.items) : null}::jsonb,
+      ${lead.sourcePath ?? null}, ${lead.userAgent ?? null}
     )
+    RETURNING id
   `;
+  return Number(rows[0].id);
 }

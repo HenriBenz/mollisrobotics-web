@@ -7,14 +7,16 @@ import { ExplodedAssembly } from "@/components/figures/ExplodedAssembly";
 import { ApplicationSwitcher } from "@/components/figures/ApplicationSwitcher";
 import { SoftFingerDemo } from "@/components/figures/SoftFingerDemo";
 import { ctas, site } from "@/lib/site";
+import { products } from "@/lib/products";
+import { ProductCard } from "@/components/store/ProductCard";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <Container>
-          <div className="grid min-h-[calc(100vh-4rem)] items-center gap-10 py-16 lg:grid-cols-12 lg:gap-8">
+      <section className="relative">
+        <Container wide>
+          <div className="panel mt-4 grid min-h-[calc(100vh-6rem)] items-center gap-10 p-6 sm:p-10 lg:grid-cols-12 lg:gap-8 lg:p-16">
             <div className="lg:col-span-6">
               <Eyebrow>{site.fullName}</Eyebrow>
               <Headline as="h1" size="display">
@@ -24,14 +26,14 @@ export default function HomePage() {
                 Affordable, modular and adaptive end effectors for the next generation of robots.
               </Lede>
               <div className="mt-10 flex flex-wrap gap-3">
-                <ButtonLink href="#platform">
-                  Explore MOLLIS <Arrow />
+                <ButtonLink href={ctas.store.href}>
+                  {ctas.store.label} <Arrow />
                 </ButtonLink>
-                <ButtonLink href={ctas.primary.href} variant="secondary">
-                  {ctas.primary.label}
+                <ButtonLink href="/store/build" variant="secondary">
+                  Build your tool
                 </ButtonLink>
               </div>
-              <p className="t-label mt-16">Pre-launch · Early access open</p>
+              <p className="t-label mt-16">Pre-launch · reservations open · prices at launch</p>
             </div>
             <div className="lg:col-span-6">
               <HeroFigure />
@@ -90,6 +92,31 @@ export default function HomePage() {
             Platform details <Arrow />
           </Link>
         </div>
+      </Section>
+
+      {/* Store */}
+      <Section id="store" wide>
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Store</Eyebrow>
+            <Headline>Reserve now. Pay at launch.</Headline>
+          </div>
+          <Link href="/store" className="inline-flex items-center gap-2 text-[15px] font-medium tracking-tight hover:text-signal">
+            all products <Arrow />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[minmax(20rem,auto)] md:grid-cols-4 md:[grid-auto-flow:dense]">
+          {products
+            .filter((p) => p.featured)
+            .slice(0, 4)
+            .map((p, i) => (
+              <ProductCard key={p.slug} product={p} span={i === 0 ? "tall" : "normal"} tone={i === 1 ? "ink" : "paper"} />
+            ))}
+        </div>
+        <p className="mt-8 max-w-[60ch] text-[13px] leading-relaxed text-ink-2">
+          Reservations are free and non-binding. Every module is a product; every product fits
+          every other. We confirm price and lead time with you before anything is charged.
+        </p>
       </Section>
 
       {/* Modularity statement */}

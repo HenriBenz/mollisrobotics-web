@@ -217,9 +217,12 @@ export function HeldObject({ variant }: { variant: ToolVariant }) {
   if (variant === "agriculture") {
     return (
       <g data-part="object">
+        {/* Objects are drawn as neutral specimens (sand / technical grey) so the palette stays black, warm white and orange. */}
         <path
           d="M200,470 C176,470 165,490 170,510 C176,532 190,548 200,556 C210,548 224,532 230,510 C235,490 224,470 200,470 Z"
-          fill="#b9452f"
+          fill="var(--sand)"
+          stroke={alu2}
+          strokeWidth="1"
         />
         {[
           [188, 492],
@@ -229,10 +232,10 @@ export function HeldObject({ variant }: { variant: ToolVariant }) {
           [186, 518],
           [204, 528],
         ].map(([x, y]) => (
-          <ellipse key={`${x}-${y}`} cx={x} cy={y} rx="1.6" ry="2.4" fill="#f0d9b0" opacity="0.85" />
+          <ellipse key={`${x}-${y}`} cx={x} cy={y} rx="1.6" ry="2.4" fill={alu2} opacity="0.8" />
         ))}
-        <path d="M188,470 C192,462 198,460 200,466 C202,460 208,462 212,470 C206,472 194,472 188,470 Z" fill="#5f7a4b" />
-        <line x1="200" y1="466" x2="200" y2="456" stroke="#5f7a4b" strokeWidth="2" strokeLinecap="round" />
+        <path d="M188,470 C192,462 198,460 200,466 C202,460 208,462 212,470 C206,472 194,472 188,470 Z" fill={polymer2} />
+        <line x1="200" y1="466" x2="200" y2="456" stroke={polymer2} strokeWidth="2" strokeLinecap="round" />
       </g>
     );
   }

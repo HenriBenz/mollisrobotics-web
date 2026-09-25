@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ctas, nav } from "@/lib/site";
+import { nav } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
+import { CartLink } from "./CartLink";
 
 export function Nav() {
   const pathname = usePathname();
@@ -20,35 +21,34 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          <Logo />
+      <Container wide>
+        <div className="flex h-14 items-center justify-between">
+          <div className="flex items-center gap-10">
+            <Logo />
+            <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+              {nav.map((item) => {
+                const active = pathname === item.href || pathname.startsWith(item.href + "/");
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-[15px] tracking-tight transition-colors hover:text-ink ${
+                      active ? "text-ink underline underline-offset-[6px]" : "text-ink-2"
+                    }`}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-            {nav.map((item) => {
-              const active = pathname === item.href || pathname.startsWith(item.href + "/");
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-[15px] tracking-tight transition-colors hover:text-ink ${
-                    active ? "text-ink" : "text-ink-2"
-                  }`}
-                  aria-current={active ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href={ctas.primary.href}
-              className="hidden h-10 items-center border border-ink bg-ink px-4 text-[14px] font-medium tracking-tight text-paper transition-colors hover:border-signal hover:bg-signal md:inline-flex"
-            >
-              {ctas.primary.label}
+          <div className="flex items-center gap-6">
+            <Link href="/early-access" className="hidden text-[15px] tracking-tight text-ink-2 hover:text-ink md:inline">
+              early access
             </Link>
+            <CartLink />
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center md:hidden"
@@ -71,18 +71,18 @@ export function Nav() {
 
       {open && (
         <div id="mobile-nav" className="border-t border-line md:hidden">
-          <Container>
+          <Container wide>
             <nav aria-label="Primary mobile" className="flex flex-col py-2">
               {nav.map((item) => (
                 <Link key={item.href} href={item.href} className="rule py-4 text-lg tracking-tight first:border-t-0">
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href={ctas.primary.href}
-                className="my-4 inline-flex h-12 items-center justify-center bg-ink text-[15px] font-medium text-paper"
-              >
-                {ctas.primary.label}
+              <Link href="/early-access" className="rule py-4 text-lg tracking-tight">
+                early access
+              </Link>
+              <Link href="/store/build" className="rule py-4 text-lg tracking-tight">
+                build your tool
               </Link>
             </nav>
           </Container>

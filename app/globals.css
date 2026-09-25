@@ -5,23 +5,32 @@
   Warm paper, near-black ink, industrial greys, one signal tone.
 */
 :root {
-  --paper: #f4f2ed;
-  --paper-2: #ebe8e1;
-  --paper-3: #e1ddd4;
-  --ink: #141414;
-  --ink-2: #4b4a47;
-  --steel: #8f8e8a;
-  --line: #d6d2c9;
-  --signal: #e2521f;
+  /* MOLLIS core color code */
+  --mollis-black: #111111;   /* primary brand, logo, hardware */
+  --graphite: #292927;       /* product housings, UI, secondary surfaces */
+  --warm-white: #f4f1eb;     /* primary light background */
+  --technical-grey: #a7a49e; /* technical drawings, metadata, secondary type */
+  --mollis-orange: #ff5a00;  /* signature accent, functional parts */
+  --orange-glass: #ff6a00;   /* transparent materials, displays */
+  --sand: #d4c9ba;           /* warm engineering neutral: packaging, some polymer parts */
+
+  --paper: #ffffff;            /* page background: pure white */
+  --paper-2: var(--warm-white); /* panels, tiles, alternating sections */
+  --paper-3: #ebe8e1;           /* hover state of tiles */
+  --ink: var(--mollis-black);
+  --ink-2: #5c5a55; /* darker than technical grey so body copy stays readable */
+  --steel: var(--technical-grey);
+  --line: #d8d5ce;
+  --signal: var(--mollis-orange);
 
   /* product materials (used in technical drawings) */
-  --polymer: #1c1c1c;
-  --polymer-2: #2c2c2c;
-  --alu: #cfd1cd;
-  --alu-2: #b4b7b2;
-  --alu-3: #e3e5e1;
-  --elastomer: #e9b98e;
-  --elastomer-2: #d9a071;
+  --polymer: var(--graphite);
+  --polymer-2: #3a3a37;
+  --alu: #cfd0cb;
+  --alu-2: var(--technical-grey);
+  --alu-3: #e6e5e0;
+  --elastomer: rgba(255, 106, 0, 0.6); /* orange glass: translucent compliant fingers */
+  --elastomer-2: var(--orange-glass);
 }
 
 @theme inline {
@@ -36,6 +45,8 @@
   --color-polymer: var(--polymer);
   --color-alu: var(--alu);
   --color-elastomer: var(--elastomer);
+  --color-sand: var(--sand);
+  --color-graphite: var(--graphite);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
@@ -77,6 +88,50 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-2);
+}
+
+/* Rounded surface panels (store tiles, hero) */
+.panel {
+  border-radius: 24px;
+  background: var(--paper-2);
+}
+.panel-signal {
+  border-radius: 24px;
+  background: var(--signal);
+  color: var(--paper);
+}
+.panel-ink {
+  border-radius: 24px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.panel-sand {
+  border-radius: 24px;
+  background: var(--sand);
+  color: var(--ink);
+}
+
+/* Category chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding: 0 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  color: var(--ink-2);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.chip:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.chip[aria-current="page"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 /* Hairline rules */

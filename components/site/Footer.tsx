@@ -33,6 +33,16 @@ export function Footer() {
             <p className="t-label mb-4">Get involved</p>
             <ul className="space-y-2">
               <li>
+                <Link href="/store" className="text-[15px] text-ink-2 hover:text-ink">
+                  Reserve a kit
+                </Link>
+              </li>
+              <li>
+                <Link href="/store/build" className="text-[15px] text-ink-2 hover:text-ink">
+                  Build your tool
+                </Link>
+              </li>
+              <li>
                 <Link href={ctas.primary.href} className="text-[15px] text-ink-2 hover:text-ink">
                   {ctas.primary.label}
                 </Link>

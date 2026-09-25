@@ -11,14 +11,16 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/platform", label: "Platform" },
-  { href: "/applications", label: "Applications" },
-  { href: "/developers", label: "Developers" },
-  { href: "/about", label: "About" },
-  { href: "/updates", label: "Updates" },
+  { href: "/store", label: "store" },
+  { href: "/platform", label: "platform" },
+  { href: "/applications", label: "applications" },
+  { href: "/developers", label: "developers" },
+  { href: "/about", label: "about" },
+  { href: "/updates", label: "updates" },
 ] as const;
 
 export const ctas = {
+  store: { href: "/store", label: "Reserve a kit" },
   primary: { href: "/early-access", label: "Join early access" },
   secondary: { href: "/contact", label: "Talk to us" },
 } as const;

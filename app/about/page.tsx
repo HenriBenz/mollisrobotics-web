@@ -58,7 +58,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section className="bg-paper-2">
+      <Section tone="grey">
         <div className="mb-12">
           <Eyebrow>What we believe</Eyebrow>
         </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section className="bg-ink text-paper">
+      <Section tone="ink">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Headline className="text-paper">Work with us.</Headline>

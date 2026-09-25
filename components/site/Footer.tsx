@@ -1,78 +1,35 @@
 import Link from "next/link";
-import { ctas, nav, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
-import { Lockup } from "./Logo";
 
+/** One-line footer. */
 export function Footer() {
   return (
-    <footer className="rule mt-auto">
-      <Container>
-        <div className="grid gap-12 py-16 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Lockup className="h-auto w-[132px]" />
-            <p className="mt-8 max-w-[34ch] text-[15px] leading-relaxed text-ink-2">
-              Affordable, modular and adaptive end effectors for the next generation of robots.
-              Engineered in {site.location}.
-            </p>
-          </div>
-
-          <div className="md:col-span-3">
-            <p className="t-label mb-4">Site</p>
-            <ul className="space-y-2">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[15px] text-ink-2 hover:text-ink">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
-            <p className="t-label mb-4">Get involved</p>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/store" className="text-[15px] text-ink-2 hover:text-ink">
-                  Reserve a kit
-                </Link>
-              </li>
-              <li>
-                <Link href="/store/build" className="text-[15px] text-ink-2 hover:text-ink">
-                  Build your tool
-                </Link>
-              </li>
-              <li>
-                <Link href={ctas.primary.href} className="text-[15px] text-ink-2 hover:text-ink">
-                  {ctas.primary.label}
-                </Link>
-              </li>
-              <li>
-                <Link href={ctas.secondary.href} className="text-[15px] text-ink-2 hover:text-ink">
-                  Become a development partner
-                </Link>
-              </li>
-              <li>
-                <a href={`mailto:${site.email}`} className="text-[15px] text-ink-2 hover:text-ink">
-                  {site.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="rule flex flex-col gap-3 py-6 text-[13px] text-ink-2 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="mt-auto py-10">
+      <Container wide>
+        <div className="flex flex-col gap-6 text-[13px] text-ink-2 md:flex-row md:items-center md:justify-between">
           <p>
-            &copy; {new Date().getFullYear()} {site.fullName}. All rights reserved.
+            &copy; {new Date().getFullYear()} {site.fullName}
           </p>
-          <div className="flex gap-6">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-2">
+            {footerNav.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-ink">
+                {item.label}
+              </Link>
+            ))}
+            <Link href="/early-access" className="hover:text-ink">
+              Early access
+            </Link>
             <Link href="/imprint" className="hover:text-ink">
               Imprint
             </Link>
             <Link href="/privacy" className="hover:text-ink">
               Privacy
             </Link>
-          </div>
+          </nav>
+          <a href={`mailto:${site.email}`} className="hover:text-ink">
+            {site.email}
+          </a>
         </div>
       </Container>
     </footer>

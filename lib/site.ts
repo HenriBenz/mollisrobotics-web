@@ -10,13 +10,24 @@ export const site = {
   location: "Germany",
 } as const;
 
+/** Primary navigation, kept short. Secondary pages are linked from the footer. */
 export const nav = [
-  { href: "/store", label: "store" },
+  { href: "/store", label: "shop" },
   { href: "/platform", label: "platform" },
-  { href: "/applications", label: "applications" },
-  { href: "/developers", label: "developers" },
   { href: "/about", label: "about" },
-  { href: "/updates", label: "updates" },
+  { href: "/contact", label: "contact" },
+] as const;
+
+/** All pages, for the footer. */
+export const footerNav = [
+  { href: "/store", label: "Shop" },
+  { href: "/store/build", label: "Build your tool" },
+  { href: "/platform", label: "Platform" },
+  { href: "/applications", label: "Applications" },
+  { href: "/developers", label: "Developers" },
+  { href: "/about", label: "About" },
+  { href: "/updates", label: "Updates" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const ctas = {

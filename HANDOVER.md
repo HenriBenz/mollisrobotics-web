@@ -80,6 +80,16 @@ public/products/        product and lab photography (add files here)
   Never a whole orange surface. No green. Tokens live in `app/globals.css`; product drawings use
   `--polymer` (graphite), `--alu`, `--elastomer` (orange glass). Objects held by the tools are
   drawn as neutral sand specimens.
+- **Minimal direction (2026-09-25, later the same day)**: user asked for "the absolute minimum,
+  very clean, futuristic". Homepage is now one hero slide (headline, one line, one button, the
+  figure) followed directly by the shop tiles. No sections, no chips, no legends. Tiles show
+  name, code, drawing, status and reserve only. Navigation is transparent with four words
+  (shop, platform, about, contact) plus checkout; all other pages are linked from a one-line
+  footer. Panels are neutral light grey `#F2F2F1` on a white page (warm white read as yellow).
+  Other sections across the site render as rounded panels via `Section tone=...`. Buttons are
+  pills. A one-second logo splash (`components/site/Splash.tsx`) shows on every full page load,
+  hidden by CSS so it never blocks the page. The nav logo is a horizontal lockup: mark +
+  "MOLLIS" + "robotics" (cropped by `scripts/crop-logo.py`).
 - **Store** (added 2026-09-25 after the Teenage Engineering and product-grid references): the
   site is structured as a webshop. `/store` (rounded hero panel, category chips, bento grid),
   `/store/[slug]` product pages, `/store/build` configurator, `/store/checkout`. Because nothing

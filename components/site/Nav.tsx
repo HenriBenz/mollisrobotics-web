@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
 import { CartLink } from "./CartLink";
 
+/** Minimal navigation: logo, four words, checkout. */
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -20,38 +21,33 @@ export function Nav() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 bg-paper/70 backdrop-blur-xl">
       <Container wide>
-        <div className="flex h-14 items-center justify-between">
-          <div className="flex items-center gap-10">
-            <Logo />
-            <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
-              {nav.map((item) => {
-                const active = pathname === item.href || pathname.startsWith(item.href + "/");
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`text-[15px] tracking-tight transition-colors hover:text-ink ${
-                      active ? "text-ink underline underline-offset-[6px]" : "text-ink-2"
-                    }`}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
+        <div className="flex h-[72px] items-center justify-between">
+          <Logo />
 
-          <div className="flex items-center gap-6">
-            <Link href="/early-access" className="hidden text-[15px] tracking-tight text-ink-2 hover:text-ink md:inline">
-              early access
-            </Link>
+          <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+            {nav.map((item) => {
+              const active = pathname === item.href || pathname.startsWith(item.href + "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-[14px] tracking-tight transition-colors hover:text-ink ${active ? "text-ink" : "text-ink-2"}`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <CartLink />
+          </nav>
+
+          <div className="flex items-center gap-4 md:hidden">
             <CartLink />
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -67,27 +63,19 @@ export function Nav() {
             </button>
           </div>
         </div>
-      </Container>
 
-      {open && (
-        <div id="mobile-nav" className="border-t border-line md:hidden">
-          <Container wide>
-            <nav aria-label="Primary mobile" className="flex flex-col py-2">
+        {open && (
+          <div id="mobile-nav" className="panel mb-3 p-3 md:hidden">
+            <nav aria-label="Primary mobile" className="flex flex-col">
               {nav.map((item) => (
-                <Link key={item.href} href={item.href} className="rule py-4 text-lg tracking-tight first:border-t-0">
+                <Link key={item.href} href={item.href} className="rounded-2xl px-4 py-3 text-lg tracking-tight hover:bg-paper-3">
                   {item.label}
                 </Link>
               ))}
-              <Link href="/early-access" className="rule py-4 text-lg tracking-tight">
-                early access
-              </Link>
-              <Link href="/store/build" className="rule py-4 text-lg tracking-tight">
-                build your tool
-              </Link>
             </nav>
-          </Container>
-        </div>
-      )}
+          </div>
+        )}
+      </Container>
     </header>
   );
 }

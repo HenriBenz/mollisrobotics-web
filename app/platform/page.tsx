@@ -65,7 +65,7 @@ export default function PlatformPage() {
         ))}
 
       {/* Modules and status */}
-      <Section id="modules" className="bg-paper-2">
+      <Section id="modules" tone="grey">
         <div className="mb-12 grid gap-6 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <Eyebrow>Module family</Eyebrow>
@@ -133,7 +133,7 @@ export default function PlatformPage() {
       </Section>
 
       {/* Open interface */}
-      <Section id="open-interface" className="grid-paper">
+      <Section id="open-interface" tone="grid">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <Eyebrow>Open interface</Eyebrow>

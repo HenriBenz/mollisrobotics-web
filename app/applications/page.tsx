@@ -59,11 +59,11 @@ export default function ApplicationsPage() {
         lede="The same Link and Core. A different Tool and Fingers for each world. This is the difference between a platform and a gripper."
       />
 
-      <Section rule={false} className="pt-0 sm:pt-0 lg:pt-0">
+      <Section className="pt-0 sm:pt-0 lg:pt-0">
         <ApplicationSwitcher />
       </Section>
 
-      <Section className="bg-paper-2">
+      <Section tone="grey">
         <div className="mb-12">
           <Eyebrow>Where MOLLIS goes</Eyebrow>
           <Headline>Six worlds. One interface.</Headline>

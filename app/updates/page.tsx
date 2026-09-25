@@ -20,7 +20,7 @@ export default function UpdatesPage() {
         title="Progress, not press releases."
         lede="Occasional notes as modules move from concept to prototype to production."
       />
-      <Section rule={false} className="pt-0 sm:pt-0 lg:pt-0">
+      <Section className="pt-0 sm:pt-0 lg:pt-0">
         <ol>
           {updates.map((u) => (
             <li key={u.slug} className="rule grid gap-4 py-10 lg:grid-cols-12">

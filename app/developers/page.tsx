@@ -49,7 +49,7 @@ export default function DevelopersPage() {
         </ol>
       </Section>
 
-      <Section className="bg-paper-2">
+      <Section tone="grey">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <Eyebrow>Principle</Eyebrow>

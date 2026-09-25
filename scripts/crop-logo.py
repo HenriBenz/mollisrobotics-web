@@ -63,12 +63,14 @@ def process(src_name, suffix):
 
     mark = band(mark_rows)
     word = band(word_rows)
+    sub = band(sub_rows)  # the "robotics" line
     lockup_out = crop_with_margin(img, bbox, 0)
 
     mark.save(BRAND / f"mollis-mark-{suffix}.png", optimize=True)
     word.save(BRAND / f"mollis-wordmark-{suffix}.png", optimize=True)
+    sub.save(BRAND / f"mollis-robotics-{suffix}.png", optimize=True)
     lockup_out.save(BRAND / f"mollis-lockup-{suffix}.png", optimize=True)
-    print("  mark", mark.size, "wordmark", word.size, "lockup", lockup_out.size)
+    print("  mark", mark.size, "wordmark", word.size, "robotics", sub.size, "lockup", lockup_out.size)
     return mark, lockup_out
 
 

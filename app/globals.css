@@ -14,21 +14,21 @@
   --orange-glass: #ff6a00;   /* transparent materials, displays */
   --sand: #d4c9ba;           /* warm engineering neutral: packaging, some polymer parts */
 
-  --paper: #ffffff;            /* page background: pure white */
-  --paper-2: var(--warm-white); /* panels, tiles, alternating sections */
-  --paper-3: #ebe8e1;           /* hover state of tiles */
+  --paper: #ffffff;   /* page background: pure white */
+  --paper-2: #f2f2f1; /* panels, tiles, alternating sections: neutral light grey, not warm */
+  --paper-3: #e8e8e6; /* hover state of tiles */
   --ink: var(--mollis-black);
-  --ink-2: #5c5a55; /* darker than technical grey so body copy stays readable */
+  --ink-2: #5c5b58; /* darker than technical grey so body copy stays readable */
   --steel: var(--technical-grey);
-  --line: #d8d5ce;
+  --line: #dcdcda;
   --signal: var(--mollis-orange);
 
   /* product materials (used in technical drawings) */
   --polymer: var(--graphite);
   --polymer-2: #3a3a37;
-  --alu: #cfd0cb;
+  --alu: #cfd0cd;
   --alu-2: var(--technical-grey);
-  --alu-3: #e6e5e0;
+  --alu-3: #e6e6e3;
   --elastomer: rgba(255, 106, 0, 0.6); /* orange glass: translucent compliant fingers */
   --elastomer-2: var(--orange-glass);
 }
@@ -132,6 +132,40 @@ body {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--paper);
+}
+
+/* Splash logo: a slow, small settle-in */
+@keyframes splash-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.splash-logo {
+  animation: splash-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.splash {
+  animation: splash-out 0.45s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    animation-duration: 0.01ms;
+    animation-delay: 0.6s;
+  }
+  .splash-logo {
+    animation: none;
+  }
 }
 
 /* Hairline rules */

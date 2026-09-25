@@ -143,6 +143,9 @@ Done:
   Linked via the Vercel CLI (`vercel link`); the Vercel MCP token only had read access.
 - Domains `mollyrobotics.com`, `www.mollyrobotics.com` and `mollyrobotics.de` are added to
   the project but **not yet verified**, see step 1.
+- **Store** (2026-09-25): `/store`, product pages, `/store/build`, `/store/checkout` with free
+  reservations into Neon. Reservation flow verified end to end (test rows id 1 early access,
+  id 2 reservation; delete when convenient). Official color code applied, white page background.
 
 Not done / next steps, in order:
 1. **Point DNS at Vercel.** `mollyrobotics.com` is registered at Spaceship (nameservers

@@ -120,10 +120,14 @@ Done:
   wired into nav and footer; favicon, Apple icon and Open Graph image generated from it.
 
 Not done / next steps, in order:
-1. **Link Vercel** to the GitHub repo. The Vercel MCP connection in the founding session was
-   authenticated but listed no teams, so the project could not be created from here. Either
-   import `HenriBenz/mollisrobotics-web` in the Vercel dashboard (grant the Vercel GitHub app
-   access to the repo), or install the CLI (`npm i -g vercel`) and run `vercel link`.
+1. **Link Vercel** to the GitHub repo. Target team: `henribenzs-projects`
+   (`team_K9gAscKxQ9Q30nuBWa5UCa3j`, where `kunstform` and `baulogistik-robotik` already live).
+   The Vercel MCP token in the founding session could read that team but every write
+   (create project, link repo) returned 403 "re-authenticate to this scope". Options:
+   re-authenticate the Vercel MCP connection with write access to that team, or use the CLI
+   (installed, v60): `vercel login`, then `vercel link` in the repo, then `vercel env add`,
+   then `vercel deploy --prod`. Or import the repo in the Vercel dashboard and grant the
+   Vercel GitHub app access to `HenriBenz/mollisrobotics-web`.
 2. Set `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` in Vercel project settings (Production + Preview).
 3. Add domains `mollyrobotics.com` and `mollyrobotics.de` in Vercel; decide whether `.de` redirects to `.com`.
 4. Add lead notifications (email on new lead, e.g. via a Vercel Marketplace email integration) and
